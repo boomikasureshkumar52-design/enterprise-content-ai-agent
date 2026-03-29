@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Enterprise Content AI Agent</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .chat-box {
+      border: 1px solid #ddd;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+    .user { color: blue; }
+    .ai { color: green; margin-bottom: 10px; }
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h2>Enterprise Content AI Agent</h2>
+
+  <div class="chat-box" id="chat"></div>
+
+  <input id="input" placeholder="Enter topic" style="width:70%">
+  <button onclick="send()">Send</button>
+
+  <div>
+    <button onclick="translate()">Translate</button>
+    <button onclick="compliance()">Compliance</button>
+    <button onclick="publish()">Publish</button>
+  </div>
+
+  <select id="platform">
+    <option>LinkedIn</option>
+    <option>Instagram</option>
+    <option>Blog</option>
+    <option>Email</option>
+  </select>
+
+</div>
+
+<script>
+
+let content = "";
+
+function addMessage(role, text) {
+  const chat = document.getElementById("chat");
+  chat.innerHTML += `<div class="${role}"><b>${role}:</b> ${text}</div>`;
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function send() {
+  let input = document.getElementById("input").value;
+
+  addMessage("user", input);
+
+  content = "AI is transforming " + input + " across industries by improving efficiency and innovation.";
+
+  addMessage("ai", "Content Agent:\n" + content);
+}
+
+function translate() {
+  if (!content) return;
+
+  addMessage("ai",
+    "Localization Agent:\nHindi and Tamil translations generated."
+  );
+}
+
+function compliance() {
+  if (!content) return;
+
+  addMessage("ai",
+    "Compliance Agent:\nContent Approved"
+  );
+}
+
+function publish() {
+  if (!content) return;
+
+  let platform = document.getElementById("platform").value;
+
+  addMessage("ai",
+    "Publishing Agent:\nPublished successfully to " + platform
+  );
+}
+
+</script>
+
+</body>
+</html>
